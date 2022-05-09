@@ -11,6 +11,7 @@ function Select({escolas,setDre}: SelectProps) {
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setDre(event.currentTarget.value)
     }
+    console.log(setDre)
     return (
         <>
             <label htmlFor="cars"></label>
