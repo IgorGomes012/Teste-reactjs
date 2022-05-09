@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import Footer from './Footer'
+import Footer from './Footer/Footer'
 import Header from './Header';
-import Table from './Table';
-import Select from './Select';
+import Table from './Table/Table';
+import Select from './Select/Select';
 const axios = require('axios').default;
 
 export type Escola = {
@@ -12,7 +12,8 @@ export type Escola = {
 
 function App() {
   const [escolas, setEscolas] = useState<Escola[]>([])
-
+  const [dre,setDre] = useState('')
+ 
   useEffect(() => {
     axios.get('https://hom-escolaaberta.sme.prefeitura.sp.gov.br/api/diretorias/')
       .then((response: { data: { results: Escola[] } }) => {
@@ -24,11 +25,13 @@ function App() {
       })
   }, [])
 
+   
+
   return (
     <>
       <Header />
-      <Table />
-      <Select escolas={escolas} />
+      <Select escolas={escolas} setDre={setDre}/>
+      <Table  dre={dre}/>
       <Footer />
     </>
   );
