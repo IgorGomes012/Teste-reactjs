@@ -12,20 +12,17 @@ export type Escola = {
 
 function App() {
   const [escolas, setEscolas] = useState<Escola[]>([])
-  const [dre,setDre] = useState('')
+  const [dre,setDre] = useState('JT')
  
   useEffect(() => {
     axios.get('https://hom-escolaaberta.sme.prefeitura.sp.gov.br/api/diretorias/')
       .then((response: { data: { results: Escola[] } }) => {
         setEscolas(response.data.results)
-        return response;
       })
       .catch((error: any) => {
-        return error
+        console.error(error)
       })
   }, [])
-
-   
 
   return (
     <>

@@ -1,8 +1,10 @@
 header{
     background-color: #274360;
+    margin-bottom:2rem;
 }
 
 h1{
     color:white;
     text-align: center;
+    padding: 1rem;
 }

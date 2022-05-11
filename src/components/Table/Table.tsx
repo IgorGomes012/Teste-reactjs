@@ -1,64 +1,62 @@
 import { useState, useEffect } from 'react'
 import './Table.css'
-
+const axios = require('axios').default;
 
 type TableProps = {
     dre: string
 }
-
-
-
-const axios = require('axios').default;
+type SME = {
+    dre: string,
+    tipoesc: string,
+    faixa: string,
+    count: number
+}
 
 function Table({ dre }: TableProps) {
 
-    const [typeSchools, setTypeEscola] = useState<any>([])
+    const [typeSchools, setTypeEscola] = useState<SME[]>([])
 
     useEffect(() => {
 
-        axios.get(`https://hom-escolaaberta.sme.prefeitura.sp.gov.br/api/smeescolas/${dre || 'JT'}`)
+        axios.get(`https://hom-escolaaberta.sme.prefeitura.sp.gov.br/api/smeescolas/${dre}`)
 
-            .then((response: any) => {
+            .then((response: { data: { results: SME[] } }) => {
                 setTypeEscola(response.data.results)
-
-                return response;
             })
-            .catch((error: any) => {
-                return error;
+            .catch((error: unknown) => {
+                console.log(error);
             })
 
     }, [dre])
 
-    const formatedSchools = typeSchools.reduce((acumulator: any, value: any) => {
+    const formatedSchools = typeSchools.reduce((acumulator: any, value: SME) => {
         if (value.tipoesc in acumulator) {
             acumulator[value.tipoesc] = {
                 ...acumulator[value.tipoesc],
-                [value.faixa]: value
+                [value.faixa]: value,
+                total: acumulator[value.tipoesc].total + value.count
             }
         }
         else {
-            acumulator[value.tipoesc] = { [value.faixa]: value }
+            acumulator[value.tipoesc] = { [value.faixa]: value, total: value.count }
         }
+
         return acumulator
     }, {})
-
-    const teste = Object.keys(formatedSchools)
-
     console.log(formatedSchools)
-
+    const schoolKeys = Object.keys(formatedSchools)
 
     return (
         <main className="content">
             <table className='rTable'>
                 <thead>
                     <tr>
-                        <th rowSpan={1}></th>
+                        <th rowSpan={2}></th>
                         <th className='title' colSpan={7}>Escolas Por Tipo e Quantidade de Aluno</th>
                         <th rowSpan={2}>TOTAL UNIDADES ESCOLARES POR TIPO</th>
                     </tr>
 
                     <tr>
-                        <th ></th>
                         <th>Sem estudantes cadastrados</th>
                         <th>1 a 250 estudantes</th>
                         <th>251 a 500 estudantes</th>
@@ -66,18 +64,10 @@ function Table({ dre }: TableProps) {
                         <th>1001 a 1500 estudantes</th>
                         <th>1500 a 2001 estudantes</th>
                         <th>2001 a 2500 estudantes</th>
-                        <th></th>
                     </tr>
                 </thead>
                 {
-                    formatedSchools && teste.map((key: any) => {
-                        const totalPorEscola = (formatedSchools[key]['Sem estudantes cadastrados']?.count || 0) +
-                            (formatedSchools[key]['1 a 250 estudantes']?.count || 0) +
-                            (formatedSchools[key]['251 a 500 estudantes']?.count || 0) +
-                            (formatedSchools[key]['501 a 1000 estudantes']?.count || 0) +
-                            (formatedSchools[key]['1001 a 1500 estudantes']?.count || 0) +
-                            (formatedSchools[key]['1500 a 2001 estudantes']?.count || 0) +
-                            (formatedSchools[key]['2001 a 2500 estudantes']?.count || 0)
+                    formatedSchools && schoolKeys.map((key) => {
 
                         return (
                             <tbody>
@@ -90,13 +80,11 @@ function Table({ dre }: TableProps) {
                                     <td>{formatedSchools[key]['1001 a 1500 estudantes']?.count || 0}</td>
                                     <td>{formatedSchools[key]['1500 a 2001 estudantes']?.count || 0}</td>
                                     <td>{formatedSchools[key]['2001 a 2500 estudantes']?.count || 0}</td>
-                                    <td>{totalPorEscola}</td>
+                                    <td>{formatedSchools[key].total}</td>
                                 </tr>
                             </tbody>
                         )
-
                     })
-
                 }
                 {
                     <tr>

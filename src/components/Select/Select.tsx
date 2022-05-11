@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react"
-import { Escola } from "../App"
+import { Escola } from "../App" 
+import './Select.css'
 
 
 type SelectProps = {
@@ -11,7 +12,6 @@ function Select({escolas,setDre}: SelectProps) {
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setDre(event.currentTarget.value)
     }
-    console.log(setDre)
     return (
         <>
             <label htmlFor="cars"></label>
