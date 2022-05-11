@@ -2,6 +2,11 @@ select,option{
     font-weight: bold; 
 }
 
+select{
+    margin-left: 0.2rem;
+    margin-bottom: 5px;
+}
+
 @media screen  and (max-width:600px){
     select{
         width: 200px;
