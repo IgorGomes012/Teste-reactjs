@@ -24,7 +24,7 @@ function Table({ dre }: TableProps) {
                 setTypeEscola(response.data.results)
             })
             .catch((error: unknown) => {
-                console.log(error);
+                console.error(error);
             })
 
     }, [dre])
@@ -43,7 +43,6 @@ function Table({ dre }: TableProps) {
 
         return acumulator
     }, {})
-    console.log(formatedSchools)
     const schoolKeys = Object.keys(formatedSchools)
 
     return (
@@ -67,10 +66,10 @@ function Table({ dre }: TableProps) {
                     </tr>
                 </thead>
                 {
-                    formatedSchools && schoolKeys.map((key) => {
+                    formatedSchools && schoolKeys.map((key,index) => {
 
                         return (
-                            <tbody>
+                            <tbody key={index}>
                                 <tr>
                                     <td>{key}</td>
                                     <td>{formatedSchools[key]['Sem estudantes cadastrados']?.count || 0}</td>
@@ -86,20 +85,6 @@ function Table({ dre }: TableProps) {
                         )
                     })
                 }
-                {
-                    <tr>
-                        <td>TOTAL DE UNIDADES ESCOLARES POR NÚMERO DE ESTUDANTES</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                }
-
             </table>
         </main>
     )

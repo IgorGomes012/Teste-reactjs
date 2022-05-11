@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import Footer from './Footer/Footer'
+import Footer from './Footer'
 import Header from './Header';
-import Table from './Table/Table';
-import Select from './Select/Select';
+import Table from './Table';
+import Select from './Select';
 const axios = require('axios').default;
 
 export type Escola = {

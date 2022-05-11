@@ -24,7 +24,7 @@ th {
     font-weight: bold;
 }
 
-.cabecalhoTable{
+.cabecalhoTable {
     padding: 5px;
 }
 
@@ -32,17 +32,13 @@ tbody {
     background-color: rgba(138, 197, 239, 0.592)
 }
 
-.totalUnidades {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
 @media screen and (max-width:850px) {
     .content {
         width: 100%;
         overflow-x: auto;
     }
-    .rTable{
+
+    .rTable {
         overflow-x: auto;
     }
 
@@ -96,7 +92,6 @@ tbody {
         width: 10%;
     }
 }
-
 
 @media screen and (min-width:1280px) {
 
