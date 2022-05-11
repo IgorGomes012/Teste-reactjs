@@ -57,13 +57,13 @@ function Table({ dre }: TableProps) {
                     </tr>
 
                     <tr>
-                        <th>Sem estudantes cadastrados</th>
-                        <th>1 a 250 estudantes</th>
-                        <th>251 a 500 estudantes</th>
-                        <th>501 a 1000 estudantes</th>
-                        <th>1001 a 1500 estudantes</th>
-                        <th>1500 a 2001 estudantes</th>
-                        <th>2001 a 2500 estudantes</th>
+                        <th className='cabecalhoTable'>Sem estudantes cadastrados</th>
+                        <th className='cabecalhoTable'>1 a 250 estudantes</th>
+                        <th className='cabecalhoTable'>251 a 500 estudantes</th>
+                        <th className='cabecalhoTable'>501 a 1000 estudantes</th>
+                        <th className='cabecalhoTable'>1001 a 1500 estudantes</th>
+                        <th className='cabecalhoTable'>1500 a 2001 estudantes</th>
+                        <th className='cabecalhoTable'>2001 a 2500 estudantes</th>
                     </tr>
                 </thead>
                 {
@@ -88,7 +88,7 @@ function Table({ dre }: TableProps) {
                 }
                 {
                     <tr>
-                        <td className='totalUnidades'>TOTAL DE UNIDADES ESCOLARES POR NÚMERO DE ESTUDANTES</td>
+                        <td>TOTAL DE UNIDADES ESCOLARES POR NÚMERO DE ESTUDANTES</td>
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>

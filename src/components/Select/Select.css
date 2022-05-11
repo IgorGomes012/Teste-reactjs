@@ -3,12 +3,12 @@ select,option{
 }
 
 select{
-    margin-left: 0.2rem;
     margin-bottom: 5px;
 }
 
-@media screen  and (max-width:400px){
+@media screen  and (max-width:425px){
     select{
         width: 100%;
+        margin-left: 0;
     }
 }

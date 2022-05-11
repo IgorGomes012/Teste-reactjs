@@ -27,8 +27,10 @@ function App() {
   return (
     <>
       <Header />
-      <Select escolas={escolas} setDre={setDre}/>
-      <Table  dre={dre}/>
+      <div className='SelectETable'>
+        <Select escolas={escolas} setDre={setDre}/>
+        <Table  dre={dre}/>
+      </div>
       <Footer />
     </>
   );
