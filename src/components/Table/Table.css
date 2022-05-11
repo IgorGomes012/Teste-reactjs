@@ -1,6 +1,7 @@
 .content {
     display: flex;
-    margin: auto;
+    height: 90%;
+    padding-bottom: 1.5rem;
 }
 
 td,
