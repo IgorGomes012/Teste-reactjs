@@ -13,6 +13,8 @@ th {
 .rTable {
     width: 100%;
     text-align: center;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
 }
 
 .rTable th,
@@ -37,10 +39,15 @@ tbody {
 @media screen and (max-width:850px) {
     .content {
         width: 100%;
+        overflow-x: auto;
+    }
+    .rTable{
+        overflow-x: auto;
     }
 
-    td,th {
-     font-size: 0.8rem;
+    td,
+    th {
+        font-size: 0.8rem;
     }
 
     .totalUnidades {
@@ -48,7 +55,7 @@ tbody {
         letter-spacing: 1px;
     }
 
-    .content {
+    .rTable {
         overflow-x: auto;
     }
 
@@ -89,9 +96,12 @@ tbody {
     }
 }
 
+
 @media screen and (min-width:1280px) {
+
     .content {
         width: 100%;
+        overflow-x: auto;
     }
 
     .rTable tbody tr td:nth-child(1) {
