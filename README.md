@@ -1,4 +1,4 @@
-link to see the projects running (teste-reactjs-151grt81u-gomesoliveirasl.vercel.app)
+link to see the projects running 
 
 ---------------------------------------
 
